@@ -4,6 +4,7 @@
 
 ## UPDATE 09.Sept.2018
     Bug fixed where you could flip more cards using multitouch
+    Bug fixed where matching pairs were on the same cards everytime (used a better shuffling algorithm)
 
 ## IMPORTANT: 
     The game is designed only for the iPhone X

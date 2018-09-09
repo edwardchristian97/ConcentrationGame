@@ -43,16 +43,16 @@ class ConcentrationGame {
             cards.append(card)
             cards.append(card)
         }
+        
         //Shuffle the cards
-        for i in (1...numberOfPairsOfCards).reversed() {
+        for i in (0...numberOfPairsOfCards * 2 - 1).reversed() {
             let nrRandom = Int(arc4random_uniform(UInt32(i)))
 
-            //print("FIRST: ", cards[nrRandom].identifier)
+            
             let aux = cards[i].identifier
             cards[i].identifier = cards[nrRandom].identifier
             cards[nrRandom].identifier = aux
-
-            //print("SECOND: ", cards[nrRandom].identifier)
         }
+
     }
 }
