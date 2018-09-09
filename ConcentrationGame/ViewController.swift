@@ -35,6 +35,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIView.appearance().isExclusiveTouch = true //disable multitouch, so only one card can be flipped
+        
         
         //Always load the best score so far
         let bestScoreDefault = UserDefaults.standard

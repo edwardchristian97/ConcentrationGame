@@ -2,6 +2,9 @@
 
 #### Welcome to the Concentration Game. This is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. For this game, I used 12 cards with emojis on them.
 
+## UPDATE 09.Sept.2018
+    Bug fixed where you could flip more cards using multitouch
+
 ## IMPORTANT: 
     The game is designed only for the iPhone X
 
