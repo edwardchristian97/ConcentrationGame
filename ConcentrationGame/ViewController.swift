@@ -11,6 +11,9 @@ import UIKit
 //ViewController
 class ViewController: UIViewController {
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     lazy var game = ConcentrationGame(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     var flipCount = 0 {
@@ -35,6 +38,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         UIView.appearance().isExclusiveTouch = true //disable multitouch, so only one card can be flipped
         
         
