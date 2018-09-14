@@ -15,6 +15,7 @@
 		B96EA5B0211D93EC00FD2AE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B96EA5AF211D93EC00FD2AE0 /* Assets.xcassets */; };
 		B96EA5B3211D93EC00FD2AE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96EA5B1211D93EC00FD2AE0 /* LaunchScreen.storyboard */; };
 		B9A420CC213C6E62005A5874 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B9A420CB213C6E62005A5874 /* README.md */; };
+		B9DFC5ED214C035C00992518 /* wallpaper.png in Resources */ = {isa = PBXBuildFile; fileRef = B9DFC5EC214C035C00992518 /* wallpaper.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B96EA5B2211D93EC00FD2AE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B96EA5B4211D93EC00FD2AE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9A420CB213C6E62005A5874 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B9DFC5EC214C035C00992518 /* wallpaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallpaper.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		B96EA5BA211D96F400FD2AE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B9DFC5EC214C035C00992518 /* wallpaper.png */,
 				B96EA5A8211D93EA00FD2AE0 /* AppDelegate.swift */,
 				B96EA5AF211D93EC00FD2AE0 /* Assets.xcassets */,
 				B96EA5B1211D93EC00FD2AE0 /* LaunchScreen.storyboard */,
@@ -113,6 +116,7 @@
 				TargetAttributes = {
 					B96EA5A4211D93EA00FD2AE0 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -143,6 +147,7 @@
 				B96EA5B0211D93EC00FD2AE0 /* Assets.xcassets in Resources */,
 				B9A420CC213C6E62005A5874 /* README.md in Resources */,
 				B96EA5AE211D93EA00FD2AE0 /* Main.storyboard in Resources */,
+				B9DFC5ED214C035C00992518 /* wallpaper.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,13 +308,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZG383X98YS;
 				INFOPLIST_FILE = ConcentrationGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = stanford.neir2434.ConcentrationGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -321,13 +327,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZG383X98YS;
 				INFOPLIST_FILE = ConcentrationGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = stanford.neir2434.ConcentrationGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

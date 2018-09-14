@@ -95,7 +95,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                 self.winMessage.text = "YOU WON!"
                 self.newGameButton.isEnabled = true
-                self.newGameButton.setTitle("NEW GAME", for: UIControlState.normal)
+                self.newGameButton.setTitle("NEW GAME", for: UIControl.State.normal)
                 self.newGameButton.backgroundColor = #colorLiteral(red: 0.3786705404, green: 0.670083236, blue: 0.9630789975, alpha: 1)
                 self.newGameButton.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 for index in self.cardButtons.indices {
@@ -128,7 +128,7 @@ class ViewController: UIViewController {
             //if the card is not flipped, flip it
             if card.isFaceUp {
                 //set the emoji for the card
-                button.setTitle(emoji(for: card), for: UIControlState.normal)
+                button.setTitle(emoji(for: card), for: UIControl.State.normal)
                 button.backgroundColor = #colorLiteral(red: 0.3786705404, green: 0.670083236, blue: 0.9630789975, alpha: 1)
                 
                 //remember the current and the previous card
@@ -145,7 +145,7 @@ class ViewController: UIViewController {
                     //disable the buttons so we can't flip more than 2 cards at a time
                     disableButtons()
                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                        button.setTitle("", for: UIControlState.normal)
+                        button.setTitle("", for: UIControl.State.normal)
                         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
                         button.isEnabled = false
                         self.enableButtons()
@@ -165,13 +165,13 @@ class ViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                     let currentButton = self.cardButtons[currentIndex]
                     let currentCard = self.game.cards[currentIndex]
-                    currentButton.setTitle("", for: UIControlState.normal)
+                    currentButton.setTitle("", for: UIControl.State.normal)
                     currentButton.backgroundColor = currentCard.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.3786705404, green: 0.670083236, blue: 0.9630789975, alpha: 1)
                     currentButton.isEnabled = currentCard.isMatched ? false : true
                     
                     let previousButton = self.cardButtons[previousIndex]
                     let previousCard = self.game.cards[previousIndex]
-                    previousButton.setTitle("", for: UIControlState.normal)
+                    previousButton.setTitle("", for: UIControl.State.normal)
                     previousButton.backgroundColor = previousCard.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.3786705404, green: 0.670083236, blue: 0.9630789975, alpha: 1)
                     previousButton.isEnabled = previousCard.isMatched ? false : true
                     self.enableButtons()
