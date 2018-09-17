@@ -11,6 +11,7 @@ import UIKit
 //ViewController
 class ViewController: UIViewController {
     
+    //Disable Status Bar
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -19,16 +20,12 @@ class ViewController: UIViewController {
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
-            //updateViewFromModel()
-            
         }
     }
     var bestScore = 99999
     
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet weak var bestScoreLabel: UILabel!
-    @IBOutlet weak var winMessage: UILabel!
-    @IBOutlet weak var newGameButton: UIButton!
     
     @IBOutlet var cardButtons: [UIButton]!
     
@@ -40,7 +37,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         UIView.appearance().isExclusiveTouch = true //disable multitouch, so only one card can be flipped
-        
         
         //Always load the best score so far
         let bestScoreDefault = UserDefaults.standard
@@ -77,6 +73,23 @@ class ViewController: UIViewController {
         
     }
     
+    func winMessageView() {
+        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WinMessageStoryboard") as UIViewController
+        self.present(viewController, animated: false, completion: nil)
+    }
+    
+    func setBestScore() {
+        //Update the best score
+        if self.bestScore > self.flipCount {
+            self.bestScore = self.flipCount
+            self.bestScoreLabel.text = "Best: \(self.bestScore)"
+            
+            let bestScoreDefault = UserDefaults.standard
+            bestScoreDefault.setValue(self.bestScore, forKey: "bestScore")
+            bestScoreDefault.synchronize()
+        }
+    }
+    
     @IBAction func touchCard(_ sender: UIButton) {
         //Touch Card behaviour
         
@@ -93,29 +106,10 @@ class ViewController: UIViewController {
         //If we flipped all the cards, show a winning message and a new game button
         if counter == cardButtons.count / 2 {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                self.winMessage.text = "YOU WON!"
-                self.newGameButton.isEnabled = true
-                self.newGameButton.setTitle("NEW GAME", for: UIControl.State.normal)
-                self.newGameButton.backgroundColor = #colorLiteral(red: 0.3786705404, green: 0.670083236, blue: 0.9630789975, alpha: 1)
-                self.newGameButton.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                for index in self.cardButtons.indices {
-                    let button = self.cardButtons[index]
-                    button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-                    button.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-                }
-                
-                //Update the best score
-                if self.bestScore > self.flipCount {
-                    self.bestScore = self.flipCount
-                    self.bestScoreLabel.text = "Best: \(self.bestScore)"
-                    
-                    let bestScoreDefault = UserDefaults.standard
-                    bestScoreDefault.setValue(self.bestScore, forKey: "bestScore")
-                    bestScoreDefault.synchronize()
-                }
+                self.setBestScore()
+                self.winMessageView()
             }
         }
-        
     }
     
     func updateViewFromModel() {

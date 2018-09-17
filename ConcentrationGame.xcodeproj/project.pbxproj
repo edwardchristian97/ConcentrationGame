@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B916AE1921501B7700A0F6C9 /* WinMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B916AE1821501B7700A0F6C9 /* WinMessageViewController.swift */; };
 		B96467B02121E087005D8404 /* ConcentrationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96467AF2121E087005D8404 /* ConcentrationGame.swift */; };
 		B96467B22121E1D3005D8404 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96467B12121E1D3005D8404 /* Card.swift */; };
 		B96EA5A9211D93EA00FD2AE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EA5A8211D93EA00FD2AE0 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B916AE1821501B7700A0F6C9 /* WinMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinMessageViewController.swift; sourceTree = "<group>"; };
 		B96467AF2121E087005D8404 /* ConcentrationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationGame.swift; sourceTree = "<group>"; };
 		B96467B12121E1D3005D8404 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B96EA5A5211D93EA00FD2AE0 /* ConcentrationGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConcentrationGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				B96EA5AA211D93EA00FD2AE0 /* ViewController.swift */,
+				B916AE1821501B7700A0F6C9 /* WinMessageViewController.swift */,
 				B96EA5AC211D93EA00FD2AE0 /* Main.storyboard */,
 				B96467AF2121E087005D8404 /* ConcentrationGame.swift */,
 				B96467B12121E1D3005D8404 /* Card.swift */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96467B02121E087005D8404 /* ConcentrationGame.swift in Sources */,
+				B916AE1921501B7700A0F6C9 /* WinMessageViewController.swift in Sources */,
 				B96EA5AB211D93EA00FD2AE0 /* ViewController.swift in Sources */,
 				B96EA5A9211D93EA00FD2AE0 /* AppDelegate.swift in Sources */,
 				B96467B22121E1D3005D8404 /* Card.swift in Sources */,
