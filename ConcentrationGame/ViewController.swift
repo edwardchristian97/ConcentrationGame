@@ -16,22 +16,36 @@ class ViewController: UIViewController {
         return true
     }
     
-    lazy var game = ConcentrationGame(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    var flipCount = 0 {
+    private lazy var game = ConcentrationGame(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    
+    private(set) var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
     var bestScore = 99999
     
-    @IBOutlet weak var flipCountLabel: UILabel!
-    @IBOutlet weak var bestScoreLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var bestScoreLabel: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBOutlet var cardButtons: [UIButton]!
+   // private var emojiChoises = ["🤔", "😘", "😂", "🤪", "😎", "😭"]
+    private var emojiChoises = "🤔😘😂🤪😎😭"
+    private var counter = 0
+    private var cardsMatched = [Int]()
     
-    var emojiChoises = ["🤔", "😘", "😂", "🤪", "😎", "😭"]
-    var counter = 0
-    var cardsMatched = [Int]()
+    private var emoji = Dictionary<Card, String>()
+    //var emoji = [Int:String]()
+    
+    private func emoji(for card: Card) -> String {
+        //set emojis for the cards
+        
+        if emoji[card] == nil, emojiChoises.count > 0 {
+            let randomStringIndex = emojiChoises.index(emojiChoises.startIndex, offsetBy: emojiChoises.count.arc4random)
+            emoji[card] = String(emojiChoises.remove(at: randomStringIndex))
+        }
+        return emoji[card] ?? "?"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +60,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func newGame(_ sender: UIButton) {
+    @IBAction private func newGame(_ sender: UIButton) {
         //New Game function
         //Reinstantiate the view using the storyboard
         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainStoryboard") as UIViewController
@@ -55,7 +69,7 @@ class ViewController: UIViewController {
         
     }
     
-    func disableButtons() {
+    private func disableButtons() {
         //Disable all buttons
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -63,7 +77,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func enableButtons() {
+    private func enableButtons() {
         //Enable all buttons
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -73,12 +87,12 @@ class ViewController: UIViewController {
         
     }
     
-    func winMessageView() {
+    private func winMessageView() {
         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WinMessageStoryboard") as UIViewController
         self.present(viewController, animated: false, completion: nil)
     }
     
-    func setBestScore() {
+    private func setBestScore() {
         //Update the best score
         if self.bestScore > self.flipCount {
             self.bestScore = self.flipCount
@@ -90,7 +104,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         //Touch Card behaviour
         
         flipCount += 1
@@ -112,7 +126,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateViewFromModel() {
+    private func updateViewFromModel() {
         var previousIndex = -1
         var currentIndex = -1
         
@@ -145,8 +159,8 @@ class ViewController: UIViewController {
                         self.enableButtons()
                     
                     }
-                    if !self.cardsMatched.contains(card.identifier) {
-                        self.cardsMatched.append(card.identifier)
+                    if !self.cardsMatched.contains(card.hashValue) {
+                        self.cardsMatched.append(card.hashValue)
                         self.counter += 1
                     }
                 }
@@ -174,26 +188,20 @@ class ViewController: UIViewController {
         }
     }
     
-    var emoji = Dictionary<Int, String>()
-    //var emoji = [Int:String]()
     
-    func emoji(for card: Card) -> String {
-       //set emojis for the cards
-        
-        if emoji[card.identifier] == nil, emojiChoises.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoises.count)))
-            emoji[card.identifier] = emojiChoises.remove(at: randomIndex)
-        }
-        /* let emoji[card.identifier] != nil {
-            return emoji[card.identifier]!
-        } else {
-            return "?"
-        } */
-        
-        return emoji[card.identifier] ?? "?"
-        
-    }
+}
 
+//Random
+extension Int {
+    var arc4random: Int {
+        if self > 0 {
+            return Int(arc4random_uniform(UInt32(self)))
+        } else if self < 0 {
+            return -Int(arc4random_uniform(UInt32(abs(self))))
+        } else {
+            return 0
+        }
+    }
 }
 
 //Design things
